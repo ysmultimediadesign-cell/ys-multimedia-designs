@@ -5,31 +5,113 @@
 
 
 /* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+/* Open / Close menu */
+
+menuToggle.addEventListener("click", function(){
+
+    navLinks.classList.toggle("open");
+
+
+    /* Change hamburger icon */
+
+    if(navLinks.classList.contains("open")){
+
+        menuToggle.innerHTML = "✕";
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Close Menu"
+        );
+
+    }
+
+    else{
+
+        menuToggle.innerHTML = "☰";
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open Menu"
+        );
+
+    }
+
+});
+
+
+/* =====================================================
+   CLOSE MOBILE MENU AFTER CLICK
+===================================================== */
+
+const menuItems =
+    document.querySelectorAll(
+        "#navLinks a"
+    );
+
+
+menuItems.forEach(function(item){
+
+    item.addEventListener("click", function(){
+
+        navLinks.classList.remove("open");
+
+        menuToggle.innerHTML = "☰";
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open Menu"
+        );
+
+    });
+
+});
+
+
+/* =====================================================
    SMOOTH NAVIGATION
 ===================================================== */
 
-document.querySelectorAll('nav a').forEach(function(link){
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(function(link){
 
-    link.addEventListener('click', function(event){
+    link.addEventListener(
+        "click",
+        function(event){
 
-        const targetId =
-            this.getAttribute('href');
+            const targetId =
+                this.getAttribute("href");
 
-        const target =
-            document.querySelector(targetId);
+            const target =
+                document.querySelector(targetId);
 
-        if(target){
 
-            event.preventDefault();
+            if(target){
 
-            target.scrollIntoView({
-                behavior:'smooth',
-                block:'start'
-            });
+                event.preventDefault();
+
+                target.scrollIntoView({
+
+                    behavior:"smooth",
+
+                    block:"start"
+
+                });
+
+            }
 
         }
-
-    });
+    );
 
 });
 
@@ -39,102 +121,172 @@ document.querySelectorAll('nav a').forEach(function(link){
 ===================================================== */
 
 const sections =
-    document.querySelectorAll('section');
+    document.querySelectorAll(
+        "section"
+    );
 
-const navLinks =
-    document.querySelectorAll('nav .links a');
+
+const desktopNavLinks =
+    document.querySelectorAll(
+        "#navLinks a"
+    );
 
 
-window.addEventListener('scroll', function(){
+window.addEventListener(
+    "scroll",
+    function(){
 
-    let current = '';
+        let current = "";
 
-    sections.forEach(function(section){
 
-        const sectionTop =
-            section.offsetTop - 150;
+        sections.forEach(
+            function(section){
 
-        const sectionHeight =
-            section.offsetHeight;
+                const sectionTop =
+                    section.offsetTop - 150;
 
-        if(
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
-        ){
+                const sectionHeight =
+                    section.offsetHeight;
 
-            current =
-                section.getAttribute('id');
+
+                if(
+                    window.scrollY >= sectionTop &&
+                    window.scrollY <
+                    sectionTop + sectionHeight
+                ){
+
+                    current =
+                        section.getAttribute(
+                            "id"
+                        );
+
+                }
+
+            }
+        );
+
+
+        desktopNavLinks.forEach(
+            function(link){
+
+                link.classList.remove(
+                    "active"
+                );
+
+
+                if(
+                    link.getAttribute("href") ===
+                    "#" + current
+                ){
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE MENU WHEN CLICKING OUTSIDE
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const clickedInsideNav =
+            event.target.closest("nav");
+
+
+        if(!clickedInsideNav){
+
+            navLinks.classList.remove(
+                "open"
+            );
+
+
+            menuToggle.innerHTML = "☰";
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open Menu"
+            );
 
         }
 
-    });
-
-
-    navLinks.forEach(function(link){
-
-        link.classList.remove('active');
-
-        if(
-            link.getAttribute('href') ===
-            '#' + current
-        ){
-
-            link.classList.add('active');
-
-        }
-
-    });
-
-});
+    }
+);
 
 
 /* =====================================================
    IMAGE ERROR HANDLING
 ===================================================== */
 
-document.querySelectorAll('img').forEach(function(image){
+document.querySelectorAll("img").forEach(
+    function(image){
 
-    image.addEventListener('error', function(){
+        image.addEventListener(
+            "error",
+            function(){
 
-        this.style.display = 'none';
+                this.style.display = "none";
 
-        const parent =
-            this.parentElement;
+                const parent =
+                    this.parentElement;
 
-        parent.classList.add('image-error');
+                parent.classList.add(
+                    "image-error"
+                );
 
-        parent.innerHTML +=
-            '<span>Image not available</span>';
+            }
+        );
 
-    });
-
-});
+    }
+);
 
 
 /* =====================================================
    VIDEO ERROR HANDLING
 ===================================================== */
 
-document.querySelectorAll('video').forEach(function(video){
+document.querySelectorAll("video").forEach(
+    function(video){
 
-    video.addEventListener('error', function(){
+        video.addEventListener(
+            "error",
+            function(){
 
-        const parent =
-            this.parentElement;
+                const parent =
+                    this.parentElement;
 
-        parent.classList.add('video-error');
+                parent.classList.add(
+                    "video-error"
+                );
 
-    });
+            }
+        );
 
-});
+    }
+);
 
 
 /* =====================================================
    PAGE LOAD
 ===================================================== */
 
-window.addEventListener('load', function(){
+window.addEventListener(
+    "load",
+    function(){
 
-    document.body.classList.add('loaded');
+        document.body.classList.add(
+            "loaded"
+        );
 
-});
+    }
+);w
