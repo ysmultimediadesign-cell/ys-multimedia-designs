@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>YS Multimedia & Designs</title>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -13,16 +19,29 @@
     scroll-behavior:smooth;
 }
 
+html{
+    width:100%;
+    overflow-x:hidden;
+}
+
 body{
     font-family:Arial, sans-serif;
     background:#080808;
     color:#fff;
     line-height:1.6;
+    width:100%;
+    overflow-x:hidden;
 }
+
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav{
     position:fixed;
     top:0;
+    left:0;
     width:100%;
     padding:20px 7%;
     display:flex;
@@ -54,9 +73,20 @@ nav a:hover{
     color:#ff7a00;
 }
 
+
+/* =========================
+   SECTIONS
+========================= */
+
 section{
     padding:100px 7%;
+    width:100%;
 }
+
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:100vh;
@@ -101,6 +131,11 @@ section{
     margin-bottom:35px;
 }
 
+
+/* =========================
+   BUTTONS
+========================= */
+
 .btn{
     display:inline-block;
     padding:14px 25px;
@@ -121,6 +156,11 @@ section{
     box-shadow:0 0 25px rgba(255,122,0,.35);
 }
 
+
+/* =========================
+   TITLES
+========================= */
+
 .title{
     font-size:42px;
     margin-bottom:15px;
@@ -130,6 +170,11 @@ section{
     color:#aaa;
     margin-bottom:45px;
 }
+
+
+/* =========================
+   ABOUT
+========================= */
 
 .about{
     display:grid;
@@ -160,6 +205,11 @@ section{
     color:#ff7a00;
     font-size:13px;
 }
+
+
+/* =========================
+   SERVICES
+========================= */
 
 .services{
     display:grid;
@@ -195,23 +245,77 @@ section{
     color:#aaa;
 }
 
+
+/* =========================
+   GALLERY
+========================= */
+
 .gallery{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
+    width:100%;
 }
 
+
+/* =========================
+   IMAGE CONTAINER
+========================= */
+
 .work{
+    width:100%;
     min-height:250px;
     background:linear-gradient(135deg,#181818,#0d0d0d);
     border:1px solid #222;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
-    padding:25px;
+    padding:0;
+
+    overflow:hidden;
+
     transition:.4s;
 }
+
+
+/* =========================
+   RESPONSIVE IMAGES
+========================= */
+
+/*
+   Image कोणत्याही device वर
+   container च्या width मध्ये
+   आपोआप adjust होईल.
+*/
+
+.work img{
+    display:block;
+
+    width:100%;
+    max-width:100%;
+
+    height:auto;
+
+    object-fit:contain;
+
+    margin:auto;
+}
+
+
+/*
+   Portrait / Landscape / Square
+   सर्व प्रकारच्या images साठी.
+*/
+
+.work img{
+    max-height:100%;
+}
+
+
+/* Hover */
 
 .work:hover{
     transform:scale(1.02);
@@ -221,6 +325,11 @@ section{
 .work span{
     color:#888;
 }
+
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact{
     text-align:center;
@@ -241,6 +350,11 @@ section{
     color:#ff7a00;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
     text-align:center;
     padding:40px 7%;
@@ -252,16 +366,58 @@ footer .logo{
     margin-bottom:10px;
 }
 
+
+/* =========================
+   ANIMATION
+========================= */
+
 @keyframes fadeUp{
+
     from{
         opacity:0;
         transform:translateY(30px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1000px){
+
+    nav{
+        padding:18px 5%;
+    }
+
+    section{
+        padding:90px 5%;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .services{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px){
 
@@ -289,22 +445,76 @@ footer .logo{
 
     .title{
         font-size:34px;
-    } .work img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
     }
+
+    .work{
+        width:100%;
+        min-height:0;
+        padding:0;
+    }
+
+    .work img{
+        width:100%;
+        height:auto;
+        max-width:100%;
+        object-fit:contain;
+    }
+
 }
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media(max-width:480px){
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .title{
+        font-size:30px;
+    }
+
+    .about-box{
+        padding:25px;
+    }
+
+    .card{
+        padding:25px;
+    }
+
+    .btn{
+        padding:12px 20px;
+        font-size:14px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
-    <div class="logo">YS <span>MULTIMEDIA & DESIGNS</span></div>
+
+    <div class="logo">
+        YS <span>MULTIMEDIA & DESIGNS</span>
+    </div>
 
     <div class="links">
+
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -312,13 +522,23 @@ footer .logo{
         <a href="#video">Videography</a>
         <a href="#editing">Editing</a>
         <a href="#contact">Contact</a>
+
     </div>
+
 </nav>
 
+
+<!-- =========================
+     HOME
+========================= -->
+
 <section class="hero" id="home">
+
     <div class="hero-content">
 
-        <p class="orange">YS MULTIMEDIA & DESIGNS</p>
+        <p class="orange">
+            YS MULTIMEDIA & DESIGNS
+        </p>
 
         <h1>
             WE CREATE.<br>
@@ -329,21 +549,40 @@ footer .logo{
             Graphic Design • Videography • Video Editing
         </p>
 
-        <a href="#design" class="btn primary">VIEW OUR WORK</a>
-        <a href="#contact" class="btn">LET'S WORK TOGETHER</a>
+        <a href="#design" class="btn primary">
+            VIEW OUR WORK
+        </a>
+
+        <a href="#contact" class="btn">
+            LET'S WORK TOGETHER
+        </a>
 
     </div>
+
 </section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about">
 
-    <h2 class="title">ABOUT US</h2>
-    <p class="subtitle">Creative visuals. Affordable solutions.</p>
+    <h2 class="title">
+        ABOUT US
+    </h2>
+
+    <p class="subtitle">
+        Creative visuals. Affordable solutions.
+    </p>
 
     <div class="about">
 
         <div class="about-box">
-            <h3>YS Multimedia & Designs</h3>
+
+            <h3>
+                YS Multimedia & Designs
+            </h3>
 
             <p>
                 YS Multimedia & Designs is a creative visual studio
@@ -365,138 +604,287 @@ footer .logo{
             </p>
 
             <div class="highlights">
+
                 <span>CREATIVE</span>
                 <span>AFFORDABLE</span>
                 <span>QUALITY</span>
+
             </div>
+
         </div>
 
+
         <div class="work">
-            <span>YOUR DESIGN COLLAGE WILL GO HERE</span>
+
+            <span>
+                YOUR DESIGN COLLAGE WILL GO HERE
+            </span>
+
         </div>
 
     </div>
+
 </section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
 
 <section id="services">
 
-    <h2 class="title">SERVICES</h2>
-    <p class="subtitle">Creative solutions for your visual needs.</p>
+    <h2 class="title">
+        SERVICES
+    </h2>
+
+    <p class="subtitle">
+        Creative solutions for your visual needs.
+    </p>
 
     <div class="services">
 
         <div class="card">
-            <div class="card-number">01</div>
-            <h3>GRAPHIC DESIGN</h3>
+
+            <div class="card-number">
+                01
+            </div>
+
+            <h3>
+                GRAPHIC DESIGN
+            </h3>
+
             <p>
                 Social Media Designs • Branding • Posters •
                 Business Cards • Thumbnails
             </p>
+
         </div>
 
+
         <div class="card">
-            <div class="card-number">02</div>
-            <h3>VIDEOGRAPHY</h3>
+
+            <div class="card-number">
+                02
+            </div>
+
+            <h3>
+                VIDEOGRAPHY
+            </h3>
+
             <p>
                 Product Shoots • Events • Promotional Videos •
                 Reels • Cinematic Content
             </p>
+
         </div>
 
+
         <div class="card">
-            <div class="card-number">03</div>
-            <h3>VIDEO EDITING</h3>
+
+            <div class="card-number">
+                03
+            </div>
+
+            <h3>
+                VIDEO EDITING
+            </h3>
+
             <p>
                 Reels • Cinematic Edits • Color Grading •
                 Motion Graphics • Promotional Videos
             </p>
+
         </div>
 
     </div>
+
 </section>
+
+
+<!-- =========================
+     GRAPHIC DESIGN
+========================= -->
 
 <section id="design">
 
-    <h2 class="title">GRAPHIC DESIGN</h2>
+    <h2 class="title">
+        GRAPHIC DESIGN
+    </h2>
+
     <p class="subtitle">
         Visuals designed to make your brand stand out.
     </p>
 
+
     <div class="gallery">
 
-        <div class="work">
-    <img src="Front Side ( YS DESIGNS ).png" alt="Business Card Front">
-</div>
 
-<div class="work">
-    <img src="Back side.png" alt="Business Card Back">
-</div>
-        
-<div class="work">
-    <img src="y.s_designs__14050520_173126020.jpg" alt="Kamika Ekadashi">
-</div>
-    
-<div class="work">
-    <img src="y.s_designs__14050520_173100489.jpg" alt="y.s_designs__14050520_173100489.jpg">
-</div>
-        
-<div class="work">
-    <img src="01 May Date.jpg" alt="01MayDate.jpg">
-</div>
-        
-<div class="work">
-    <img src="Gavdev Sohala.jpg" alt="Gavdev Sohala.jpg">
-</div>
-        
-<div class="work">
-    <img src="Wedding Invitation.jpg" alt="Wedding Invitation.jpg">
-</div>
+        <div class="work">
+
+            <img
+                src="Front Side ( YS DESIGNS ).png"
+                alt="Business Card Front"
+            >
+
+        </div>
+
+
+        <div class="work">
+
+            <img
+                src="Back side.png"
+                alt="Business Card Back"
+            >
+
+        </div>
+
+
+        <div class="work">
+
+            <img
+                src="y.s_designs__14050520_173126020.jpg"
+                alt="Kamika Ekadashi"
+            >
+
+        </div>
+
+
+        <div class="work">
+
+            <img
+                src="y.s_designs__14050520_173100489.jpg"
+                alt="YS Designs"
+            >
+
+        </div>
+
+
+        <div class="work">
+
+            <img
+                src="01 May Date.jpg"
+                alt="01 May Date"
+            >
+
+        </div>
+
+
+        <div class="work">
+
+            <img
+                src="Gavdev Sohala.jpg"
+                alt="Gavdev Sohala"
+            >
+
+        </div>
+
+
+        <div class="work">
+
+            <img
+                src="Wedding Invitation.jpg"
+                alt="Wedding Invitation"
+            >
+
+        </div>
+
 
     </div>
+
 </section>
+
+
+<!-- =========================
+     VIDEOGRAPHY
+========================= -->
 
 <section id="video">
 
-    <h2 class="title">VIDEOGRAPHY</h2>
+    <h2 class="title">
+        VIDEOGRAPHY
+    </h2>
+
     <p class="subtitle">
         Capturing moments. Creating stories.
     </p>
 
     <div class="gallery">
 
-        <div class="work"><span>VIDEOGRAPHY PROJECT 01</span></div>
-        <div class="work"><span>VIDEOGRAPHY PROJECT 02</span></div>
-        <div class="work"><span>VIDEOGRAPHY PROJECT 03</span></div>
-        <div class="work"><span>VIDEOGRAPHY PROJECT 04</span></div>
+        <div class="work">
+            <span>VIDEOGRAPHY PROJECT 01</span>
+        </div>
+
+        <div class="work">
+            <span>VIDEOGRAPHY PROJECT 02</span>
+        </div>
+
+        <div class="work">
+            <span>VIDEOGRAPHY PROJECT 03</span>
+        </div>
+
+        <div class="work">
+            <span>VIDEOGRAPHY PROJECT 04</span>
+        </div>
 
     </div>
+
 </section>
+
+
+<!-- =========================
+     VIDEO EDITING
+========================= -->
 
 <section id="editing">
 
-    <h2 class="title">VIDEO EDITING</h2>
+    <h2 class="title">
+        VIDEO EDITING
+    </h2>
+
     <p class="subtitle">
         Turning raw footage into engaging visual stories.
     </p>
 
     <div class="gallery">
 
-        <div class="work"><span>EDITED VIDEO 01</span></div>
-        <div class="work"><span>EDITED VIDEO 02</span></div>
-        <div class="work"><span>EDITED VIDEO 03</span></div>
-        <div class="work"><span>EDITED VIDEO 04</span></div>
+        <div class="work">
+            <span>EDITED VIDEO 01</span>
+        </div>
+
+        <div class="work">
+            <span>EDITED VIDEO 02</span>
+        </div>
+
+        <div class="work">
+            <span>EDITED VIDEO 03</span>
+        </div>
+
+        <div class="work">
+            <span>EDITED VIDEO 04</span>
+        </div>
 
     </div>
 
     <div style="text-align:center;margin-top:40px;">
-        <p class="orange">RAW FOOTAGE → FINAL EDIT</p>
+
+        <p class="orange">
+            RAW FOOTAGE → FINAL EDIT
+        </p>
+
     </div>
 
 </section>
 
+
+<!-- =========================
+     CONTACT
+========================= -->
+
 <section class="contact" id="contact">
 
-    <h2 class="title">LET'S CREATE SOMETHING AMAZING TOGETHER.</h2>
+    <h2 class="title">
+        LET'S CREATE SOMETHING AMAZING TOGETHER.
+    </h2>
 
     <p class="subtitle">
         Have a project or idea? Let's bring it to life.
@@ -504,7 +892,9 @@ footer .logo{
 
     <div class="contact-info">
 
-        <p>📍 Maharashtra</p>
+        <p>
+            📍 Maharashtra
+        </p>
 
         <p>
             📧
@@ -522,35 +912,53 @@ footer .logo{
 
     </div>
 
+
     <a
         class="btn primary"
         href="https://wa.me/919356010285"
         target="_blank">
+
         WHATSAPP
+
     </a>
+
 
     <a
         class="btn"
         href="https://www.instagram.com/y.s_designs_/"
         target="_blank">
+
         INSTAGRAM
+
     </a>
+
 
     <a
         class="btn"
         href="mailto:ysmultimediadesigns@gmail.com">
+
         EMAIL
+
     </a>
 
 </section>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
     <div class="logo">
+
         YS <span>MULTIMEDIA & DESIGNS</span>
+
     </div>
 
-    <p>Graphic Design • Videography • Video Editing</p>
+    <p>
+        Graphic Design • Videography • Video Editing
+    </p>
 
     <p style="margin-top:15px;">
         Home | About | Services | Design | Videography | Editing | Contact
@@ -561,6 +969,7 @@ footer .logo{
     </p>
 
 </footer>
+
 
 </body>
 </html>
